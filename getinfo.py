@@ -17,7 +17,7 @@ def getBattles():
             except: pass
 
             while True:
-                main("..scout","Number_0ne_token.txt")
+                main("..scout","scouttoken.txt")
                 sleep(1)
                 datapack = getLastMessageGuild(discordscraper, guild, channel)
                 try:

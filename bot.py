@@ -8,6 +8,7 @@ from strategy import *
 cash = getCash()
 
 while True:
+    sleep(600+random.randint(1,600))
     battles = getBattles()
 
     beststrategy = None
@@ -19,7 +20,9 @@ while True:
             if strategy.value > bestEV:
                 beststrategy = strategy
                 bestEV = strategy.value
+
     if bestEV > 0.16:
-        main(" ".join(["buy",beststrategy.strategy,str(beststrategy.number)]),"token.txt")
+        main(" ".join(["..buy",beststrategy.strategy,str(beststrategy.number)]),"token.txt")
         sleep(5)
-        main(" ".join(["battle",beststrategy.battlename,"all"]),"token.txt")
+        main(" ".join(["..battle",beststrategy.battlename,"all"]),"token.txt")
+        sleep(82800)
