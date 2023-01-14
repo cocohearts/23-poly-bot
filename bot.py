@@ -5,6 +5,8 @@ from time import sleep
 import random
 from strategy import *
 
+cash = getCash()
+
 while True:
     battles = getBattles()
 
@@ -12,7 +14,7 @@ while True:
     bestEV = 0
     for battle in battles:
         print(battle.name)
-        strategy = Strategy.battleSolver(battle,447)
+        strategy = Strategy.battleSolver(battle,cash)
         if strategy:
             if strategy.value > bestEV:
                 beststrategy = strategy
