@@ -21,7 +21,7 @@ while True:
                 beststrategy = strategy
                 bestEV = strategy.value
 
-    if bestEV > 0.16:
+    if bestEV > 0.3:
         main(" ".join(["..buy",beststrategy.strategy,str(beststrategy.number)]),"token.txt")
         sleep(5)
         main(" ".join(["..battle",beststrategy.battlename,"all"]),"token.txt")

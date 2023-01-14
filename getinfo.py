@@ -17,6 +17,7 @@ def getBattles():
             except: pass
 
             while True:
+                sleep(10)
                 main("..scout","scouttoken.txt")
                 sleep(1)
                 datapack = getLastMessageGuild(discordscraper, guild, channel)
@@ -61,7 +62,7 @@ def getCash():
                 sleep(1)
                 data = getLastMessageGuild(discordscraper, guild, channel)
                 try:
-                    if data[0][0]['embeds'][0]['title'] == 'fish4':
+                    if data[0][0]['embeds'][0]['title'] == 'johnnyjohn':
                         break
                 except:
                     continue
