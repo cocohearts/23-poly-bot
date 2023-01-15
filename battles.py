@@ -64,7 +64,7 @@ class Army:
             "ship" : 5,
             "battleship" : 20
         }
-    
+
     meleeunits = [
         "warrior",
         "rider",
@@ -128,10 +128,12 @@ class Army:
                 if not unit.debuffed:
                     meleeundebuffed.append(unit)
 
-            if ranged:
-                debuffed = random.sample(rangedundebuffed + meleeundebuffed,min(size,len(rangedundebuffed) + len(meleeundebuffed)))
-            else:
-                debuffed = random.sample(meleeundebuffed,min(size,len(meleeundebuffed)))
+            debuffed = random.sample(rangedundebuffed + meleeundebuffed,min(size,len(rangedundebuffed) + len(meleeundebuffed)))
+
+            if not ranged:
+                for unit in debuffed:
+                    if unit in opponent.rangedrolls:
+                        debuffed.remove(unit)
             
             diff = 0
             for unitroll in debuffed:
@@ -175,8 +177,11 @@ class Battle:
         for run in range(runs):
             wins += self.battle()
         probability = wins/runs
-        logwin = math.log((cash+self.reward-self.attacker.cost())/cash)
-        logloss = math.log((cash-self.attacker.cost())/cash)
+        try:
+            logwin = math.log((cash+self.reward-self.attacker.cost())/cash)
+            logloss = math.log((cash-self.attacker.cost())/cash)
+        except:
+            return (float('-inf'),0)
         logEV = logwin * probability + logloss * (1-probability)
 
         return (logEV, probability)

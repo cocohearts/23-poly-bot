@@ -4,15 +4,15 @@ from battles import *
 from strategy import *
 
 
-army1 = Army({'warrior': 1, 'archer': 49, 'rider': 0, 'defender': 38, 'mindbender': 0, 'knight': 0, 'catapult': 0, 'swordsman': 0, 'cloak': 0, 'giant': 0, 'boat': 56, 'ship': 50, 'battleship': 0})
+army1 = Army({'warrior': 0, 'archer': 49, 'rider': 0, 'defender': 0, 'mindbender': 0, 'knight': 0, 'catapult': 0, 'swordsman': 10, 'cloak': 0, 'giant': 15, 'boat': 20, 'ship': 0, 'battleship': 0})
 army2 = Army({'warrior': 0, 'archer': 0, 'rider': 0, 'defender': 0, 'mindbender': 0, 'knight': 0, 'catapult': 0, 'swordsman': 0, 'cloak': 0, 'giant': 0, 'boat': 0, 'ship': 0, 'battleship': 6})
 
 # battle = Battle(army1,army2,155,"battle",5)
 # print(army1.cost())
 # print(battle.battlelogEV(500))
-strategy = Strategy.battleSolver(Battle(army1,Army(),462,"name",5),579)
+strategy = Strategy.battleSolver(Battle(army1,Army(),800,"name",5),3000)
 print(
-    strategy.strategy,
-    strategy.number,
+    strategy.battle.attacker.armydict,
     strategy.value
 )
+# getBattles()
