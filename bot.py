@@ -20,8 +20,10 @@ while True:
             bestEV = strategy.value
 
     now = datetime.datetime.now()
-
-    if bestEV > 0.32 or (now.hour == 15 and now.minute >= 30):
-        cash = beststrategy.execute()
+    elapsed_hours = (now+datetime.timedelta(hours=8)).hour()
+    cutoff = 0.12 + 0.75*elapsed_hours
+    if bestEV > cutoff or (now.hour == 15 and now.minute >= 30):
+        if bestEV > 0:
+            cash = beststrategy.execute()
 
     sleep(300+random.randint(1,300))
