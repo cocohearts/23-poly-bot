@@ -3,6 +3,7 @@ from module.DiscordScraper import *
 from send_msg import main
 from time import sleep
 from battles import *
+import datetime
 
 def getBattles():
     discordscraper = DiscordScraper()
@@ -51,6 +52,7 @@ def getBattles():
             number = int(splitline[-1])
             opponent.armydict[unit] = number
         battles.append(Battle(opponent,Army(),reward,name,level))
+    print("got battles",datetime.datetime.now())
     return battles
 
 def getCash():
