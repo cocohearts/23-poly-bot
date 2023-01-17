@@ -5,6 +5,8 @@ import random
 from strategy import *
 import datetime
 
+sleep(600)
+
 cash = getCash()
 
 while True:
@@ -21,7 +23,7 @@ while True:
 
     now = datetime.datetime.now()
     elapsed_hours = (now+datetime.timedelta(hours=8)).hour
-    cutoff = 0.06 + 0.75*(24-elapsed_hours)
+    cutoff = 0.01*(24-elapsed_hours)
     if bestEV > cutoff or (now.hour == 15 and now.minute >= 30):
         if bestEV > 0:
             cash = beststrategy.execute()

@@ -12,13 +12,13 @@ def getBattles():
             testdatapack = getLastMessageGuild(discordscraper, guild, channel)
             try:
                 if testdatapack[0][0]['embeds'][0]['title'] == 'Found battles':
-                    datapack = testdatapack
-          
-                    break
+                    if (datetime.datetime.now() - testdatapack[1]).seconds < 20 * 60:
+                        datapack = testdatapack
+                        break
             except: pass
 
             while True:
-                sleep(10)
+                sleep(60)
                 main("..scout","token.txt")
                 sleep(1)
                 datapack = getLastMessageGuild(discordscraper, guild, channel)
