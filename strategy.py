@@ -69,7 +69,7 @@ class Strategy:
         cash = getCash()
         
         waittime = datetime.datetime.now()
-        waittime.replace(hour=16,minute=0,second=0)
+        waittime = waittime.replace(hour=16,minute=0,second=0)
         if waittime < datetime.datetime.now():
             waittime = waittime + datetime.timedelta(days=1)
         pause.until(waittime)
