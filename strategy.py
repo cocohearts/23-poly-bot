@@ -22,6 +22,9 @@ class Strategy:
             unitnumber = 0
             for unitcount in range(0,top+1):
                 self.battle.attacker.armydict[unit] = unitcount
+                if unitnumber > 0 and unitcount > unitnumber + 3:
+                    break
+                
                 battleresults = self.battle.battlelogEV(cash)
                 if battleresults[1] >= 0.8 and battleresults[0] > maxlogEV:
                     unitnumber = unitcount

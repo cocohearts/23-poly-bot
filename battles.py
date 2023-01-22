@@ -118,22 +118,17 @@ class Army:
     def debuff(self,opponent):
         """debuff opponent"""
         def unitdebuff(opponent,factor,size,ranged):
-            rangedundebuffed = []
-            meleeundebuffed = []
-            for unit in opponent.rangedrolls:
-                if not unit.debuffed:
-                    rangedundebuffed.append(unit)
-            
-            for unit in opponent.meleerolls:
-                if not unit.debuffed:
-                    meleeundebuffed.append(unit)
+            debuffed = random.sample(opponent.rangedrolls + opponent.meleerolls,min(size,len(opponent.rangedrolls + opponent.meleerolls)))
 
-            debuffed = random.sample(rangedundebuffed + meleeundebuffed,min(size,len(rangedundebuffed) + len(meleeundebuffed)))
+            rangedrolls = []
 
             if not ranged:
                 for unit in debuffed:
                     if unit in opponent.rangedrolls:
-                        debuffed.remove(unit)
+                        rangedrolls.append(unit)
+
+            for unit in rangedrolls:
+                debuffed.remove(unit)
             
             diff = 0
             for unitroll in debuffed:
@@ -167,8 +162,7 @@ class Battle:
         
         for attackerroll in self.attacker.meleerolls + self.attacker.rangedrolls:
             attackerscore += attackerroll.roll
-        if attackerscore < defenderscore:
-            pass
+
         return (attackerscore >= defenderscore)
 
     def battlelogEV(self,cash):
