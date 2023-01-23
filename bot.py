@@ -29,4 +29,4 @@ while True:
     if bestEV > cutoff:
         cash = beststrategy.execute()
 
-    sleep(300+random.randint(1,300))
+    sleep(200+random.randint(1,200))

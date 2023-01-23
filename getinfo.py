@@ -4,6 +4,7 @@ from send_msg import main
 from time import sleep
 from battles import *
 import datetime
+import random
 
 def getBattles():
     discordscraper = DiscordScraper()
@@ -12,7 +13,7 @@ def getBattles():
             testdatapack = getLastMessageGuild(discordscraper, guild, channel)
             try:
                 if testdatapack[0][0]['embeds'][0]['title'] == 'Found battles':
-                    if (datetime.datetime.now() - testdatapack[1]).seconds < 20 * 60:
+                    if (datetime.datetime.now() - testdatapack[1]).seconds < (6+random.randint(1,9)) * 60:
                         datapack = testdatapack
                         break
             except: pass
