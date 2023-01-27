@@ -17,11 +17,31 @@ class Strategy:
 
         def fillout(self,unit,cash):
             """fills with unit """
-            top = cash//Army.costdict[unit]
+            most = (self.battle.reward - self.battle.attacker.cost()) // Army.costdict[unit]
+            top = most
             bottom = self.battle.reward // Army.costdict[unit] // 2
             maxlogEV = 0
             unitnumber = 0
-            for unitcount in range(bottom,top+1):
+            # for unitcount in range(bottom,top+1):
+            #     self.battle.attacker.armydict[unit] = unitcount
+            #     if unitnumber > 0 and unitcount > unitnumber + 3:
+            #         break
+                
+            #     battleresults = self.battle.battlelogEV(cash)
+            #     if battleresults[1] >= 0.8 and battleresults[0] > maxlogEV:
+            #         unitnumber = unitcount
+            #         maxlogEV = battleresults[0]
+
+            # first find 0
+            while top > bottom + 1:
+                midpoint = (top + bottom) // 2
+                self.battle.attacker.armydict[unit] = midpoint
+                if self.battle.battlelogEV(cash)[0] > 0:
+                    top = midpoint
+                else:
+                    bottom = midpoint
+
+            for unitcount in range(bottom,most+1):
                 self.battle.attacker.armydict[unit] = unitcount
                 if unitnumber > 0 and unitcount > unitnumber + 3:
                     break
@@ -30,6 +50,7 @@ class Strategy:
                 if battleresults[1] >= 0.8 and battleresults[0] > maxlogEV:
                     unitnumber = unitcount
                     maxlogEV = battleresults[0]
+
             self.battle.attacker.armydict[unit] = unitnumber
             self.value = maxlogEV
             return self

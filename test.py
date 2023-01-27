@@ -11,18 +11,26 @@ army2 = Army({'warrior': 0, 'archer': 0, 'rider': 0, 'defender': 0, 'mindbender'
 battle = Battle(army1,army2,1984,"battle",5)
 print(army1.cost())
 print(army2.cost())
-now = dt.datetime.now()
-print(battle.battlelogEV(2500))
-print(dt.datetime.now()-now)
 # now = dt.datetime.now()
-# print(dt.datetime.now())
-# strategy = Strategy.battleSolver(Battle(army1,Army(),1984,"name",5),2500)
-# print(
-#     strategy.battle.attacker.armydict,
-#     strategy.value
-# )
-# print(dt.datetime.now())
+# print(battle.battlelogEV(2500))
 # print(dt.datetime.now()-now)
+def clock(number):
+    army2.armydict['battleship'] = number
+    now = dt.datetime.now()
+    print(number,battle.battlelogEV(2500))
+    print(dt.datetime.now()-now)
+
+# for r in range(55,70):
+#     clock(r)
+now = dt.datetime.now()
+print(dt.datetime.now())
+strategy = Strategy.battleSolver(Battle(army1,Army(),1984,"name",5),2500)
+print(
+    strategy.battle.attacker.armydict,
+    strategy.value
+)
+print(dt.datetime.now())
+print(dt.datetime.now()-now)
 # getBattles()
 """
 knight(s) × 73
