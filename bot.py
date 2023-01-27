@@ -25,7 +25,7 @@ while True:
 
     now = datetime.datetime.now()
     elapsed_hours = (now+datetime.timedelta(hours=8)).hour
-    cutoff = 0.008*(24-elapsed_hours)
+    cutoff = 0.01*(24-elapsed_hours)
     try:
         print("bestEV:",bestEV,beststrategy.battle.name)
     except:
