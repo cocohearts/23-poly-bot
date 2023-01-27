@@ -4,6 +4,7 @@ from time import sleep
 import random
 from strategy import *
 import datetime
+from math import log
 
 cash = getCash()
 
@@ -25,7 +26,7 @@ while True:
 
     now = datetime.datetime.now()
     elapsed_hours = (now+datetime.timedelta(hours=8)).hour
-    cutoff = 0.01*(24-elapsed_hours)
+    cutoff = 0.07*(log(24-elapsed_hours))**(0.5)
     try:
         print("bestEV:",bestEV,beststrategy.battle.name)
     except:
