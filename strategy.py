@@ -18,9 +18,10 @@ class Strategy:
         def fillout(self,unit,cash):
             """fills with unit """
             top = cash//Army.costdict[unit]
+            bottom = self.battle.reward // Army.costdict[unit] // 2
             maxlogEV = 0
             unitnumber = 0
-            for unitcount in range(0,top+1):
+            for unitcount in range(bottom,top+1):
                 self.battle.attacker.armydict[unit] = unitcount
                 if unitnumber > 0 and unitcount > unitnumber + 3:
                     break

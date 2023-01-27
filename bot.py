@@ -8,7 +8,11 @@ import datetime
 cash = getCash()
 
 while True:
-    battles = getBattles()
+    try:
+        battles = getBattles()
+    except:
+        sleep(120)
+        continue
 
     beststrategy = None
     bestEV = 0
@@ -27,6 +31,9 @@ while True:
     except:
         pass
     if bestEV > cutoff:
-        cash = beststrategy.execute()
+        try:
+            cash = beststrategy.execute()
+        except:
+            pass
 
     sleep(200+random.randint(1,200))

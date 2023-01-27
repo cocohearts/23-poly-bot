@@ -122,16 +122,24 @@ class Army:
 
             rangedrolls = []
 
-            if not ranged:
-                for unit in debuffed:
-                    if unit in opponent.rangedrolls:
-                        rangedrolls.append(unit)
+            # if not ranged:
+            #     for unit in debuffed:
+            #         if unit in opponent.rangedrolls:
+            #             rangedrolls.append(unit)
 
-            for unit in rangedrolls:
-                debuffed.remove(unit)
+            # for unit in rangedrolls:
+            #     debuffed.remove(unit)
+
+            # for unit in debuffed:
+            #     if unit.debuffed:
+            #         debuffed.remove(unit)
             
             diff = 0
             for unitroll in debuffed:
+                if unitroll in opponent.rangedrolls:
+                    continue
+                if unitroll.debuffed:
+                    continue
                 newval = math.floor(unitroll.roll*factor)
                 diff += unitroll.roll - newval
                 unitroll.roll = newval
