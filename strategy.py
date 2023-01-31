@@ -19,7 +19,7 @@ class Strategy:
             """fills with unit """
             most = (self.battle.reward - self.battle.attacker.cost()) // Army.costdict[unit]
             top = most
-            bottom = self.battle.reward // Army.costdict[unit] // 2
+            bottom = 0
             maxlogEV = 0
             unitnumber = 0
             # for unitcount in range(bottom,top+1):
@@ -67,7 +67,7 @@ class Strategy:
             totalunits = 0
             for unit in mybattle.defender.armydict:
                 totalunits += mybattle.defender.armydict[unit]
-            print(totalunits)
+            # print(totalunits)
             mindbenderlessstrategy = Strategy(copy.deepcopy(mybattle))
             mindbenderstrategy = Strategy(copy.deepcopy(mybattle))
 

@@ -70,7 +70,8 @@ class Army:
         "rider",
         "knight",
         "swordsman",
-        "giant"
+        "giant",
+        "cloak"
     ]
 
     def __init__(self, armydict = None):
@@ -172,7 +173,7 @@ class Battle:
         
         for attackerroll in self.attacker.meleerolls + self.attacker.rangedrolls:
             attackerscore += attackerroll.roll
-        print(defenderscore,attackerscore)
+        # print(defenderscore,attackerscore)
 
         return (attackerscore >= defenderscore)
 
