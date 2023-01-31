@@ -119,7 +119,7 @@ class Army:
         """debuff opponent"""
         def unitdebuff(opponent,factor,size,ranged):
             debuffed = random.sample(opponent.rangedrolls + opponent.meleerolls,min(size,len(opponent.rangedrolls + opponent.meleerolls)))
-
+            # print("sample size",factor,size,min(size,len(opponent.rangedrolls + opponent.meleerolls)))
             rangedrolls = []
 
             # if not ranged:
@@ -133,17 +133,19 @@ class Army:
             # for unit in debuffed:
             #     if unit.debuffed:
             #         debuffed.remove(unit)
-            
+
             diff = 0
             for unitroll in debuffed:
-                if unitroll in opponent.rangedrolls:
-                    continue
+                if not ranged:
+                    if unitroll in opponent.rangedrolls:
+                        continue
                 if unitroll.debuffed:
                     continue
                 newval = math.floor(unitroll.roll*factor)
                 diff += unitroll.roll - newval
                 unitroll.roll = newval
                 unitroll.debuffed = True
+            # print("final return",diff)
             return diff
 
         self.mindbender = unitdebuff(opponent,0.5,self.armydict["mindbender"],False)
@@ -157,7 +159,7 @@ class Battle:
         self.reward = reward
         self.name = name
         self.level = level
-    
+
     def battle(self):
         self.defender.roll()
         self.attacker.roll()
@@ -170,6 +172,7 @@ class Battle:
         
         for attackerroll in self.attacker.meleerolls + self.attacker.rangedrolls:
             attackerscore += attackerroll.roll
+        print(defenderscore,attackerscore)
 
         return (attackerscore >= defenderscore)
 

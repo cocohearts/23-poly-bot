@@ -67,7 +67,7 @@ class Strategy:
             totalunits = 0
             for unit in mybattle.defender.armydict:
                 totalunits += mybattle.defender.armydict[unit]
-            
+            print(totalunits)
             mindbenderlessstrategy = Strategy(copy.deepcopy(mybattle))
             mindbenderstrategy = Strategy(copy.deepcopy(mybattle))
 
